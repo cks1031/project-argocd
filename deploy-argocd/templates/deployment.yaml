@@ -1,0 +1,114 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb
+  labels:
+    app: mariadb
+spec:
+  replicas: {{.Values.replicaCount}}
+  selector:
+    matchLabels:
+      app: mariadb
+  template:
+    metadata:
+      labels:
+        app: mariadb
+    spec:
+      containers:
+        - name: mariadb
+          image: {{.Values.image.mariadb}}
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "ubuntu"
+            - name: MYSQL_DATABASE
+              value: "ubuntu"
+            - name: MYSQL_USER
+              value: "ubuntu"
+            - name: MYSQL_PASSWORD
+              value: "ubuntu"
+          volumeMounts:
+            - name: mariadb-init
+              mountPath: /docker-entrypoint-initdb.d/
+      volumes:
+        - name: mariadb-init
+          configMap:
+            name: mariadb-init
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-service
+  labels:
+    app: admin
+spec:
+  replicas: {{.Values.replicaCount}}
+  selector:
+    matchLabels:
+      app: admin
+  template:
+    metadata:
+      labels:
+        app: admin
+    spec:
+      containers:
+        - name: admin-container
+          image: {{.Values.image.admin}}
+          ports:
+            - containerPort: 8000
+          env:
+            - name: UVICORN_PORT
+              value: "8000"
+          command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: visitor-service
+  labels:
+    app: visitor
+spec:
+  replicas: {{.Values.replicaCount}}
+  selector:
+    matchLabels:
+      app: visitor
+  template:
+    metadata:
+      labels:
+        app: visitor
+    spec:
+      containers:
+        - name: visitor-container
+          image: {{.Values.image.visitor}}
+          ports:
+            - containerPort: 8050
+          env:
+            - name: UVICORN_PORT
+              value: "8050"
+          command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8050", "--reload"]
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-service
+  labels:
+    app: frontend
+spec:
+  replicas: {{.Values.replicaCount}}
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend-container
+          image: {{.Values.image.frontend}}
+          ports:
+            - containerPort: 3000
+          command: ["npm", "start"]
