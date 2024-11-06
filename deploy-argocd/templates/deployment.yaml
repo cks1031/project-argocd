@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: mariadb
-          image: {{.Values.image.mariadb}}
+          image: {{.Values.image.mariadb.repository}}
           ports:
             - containerPort: 3306
           env:
@@ -54,7 +54,7 @@ spec:
     spec:
       containers:
         - name: admin-container
-          image: {{.Values.image.admin}}
+          image: {{.Values.image.admin.repository}}
           ports:
             - containerPort: 8000
           env:
@@ -81,7 +81,7 @@ spec:
     spec:
       containers:
         - name: visitor-container
-          image: {{.Values.image.visitor}}
+          image: {{.Values.image.visitor.repository}}
           ports:
             - containerPort: 8050
           env:
@@ -108,7 +108,7 @@ spec:
     spec:
       containers:
         - name: frontend-container
-          image: {{.Values.image.frontend}}
+          image: {{.Values.image.frontend.repository}}
           ports:
             - containerPort: 3000
           command: ["npm", "start"]
