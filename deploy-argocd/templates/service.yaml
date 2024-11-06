@@ -6,7 +6,7 @@ spec:
   selector:
     app: mariadb
   ports:
-    - port: {{.Values.service.mariadb}}
+    - port: {{.Values.service.mariadb.port}}
       protocol: TCP
       targetPort: 3306
 
@@ -20,7 +20,7 @@ spec:
     app: admin
   ports:
     - protocol: TCP
-      port: {{.Values.service.admin}}
+      port: {{.Values.service.admin.port}}
       targetPort: 8000
 
 ---
@@ -33,7 +33,7 @@ spec:
     app: visitor
   ports:
     - protocol: TCP
-      port: {{.Values.service.visitor}}
+      port: {{.Values.service.visitor.port}}
       targetPort: 8050
 
 ---
@@ -46,7 +46,7 @@ spec:
     app: frontend
   ports:
     - protocol: TCP
-      port: {{.Values.service.frontend}}
+      port: {{.Values.service.frontend.port}}
       targetPort: 3000
       nodePort: 30003  # NodePort 설정
   type: NodePort
