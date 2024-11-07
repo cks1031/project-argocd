@@ -7,15 +7,19 @@ replicaCount: 1
 image:
   frontend:
     repository: nanakia1031/prj-frontend
+    tag: "latest"  # 기본 태그 설정
 
   mariadb:
     repository: mariadb:10.6.19-focal
+    tag: "latest"
 
   admin:
     repository: nanakia1031/prj-admin
+    tag: "latest"
 
   visitor:
     repository: nanakia1031/prj-visitor
+    tag: "latest"
 
 service:
   frontend:
