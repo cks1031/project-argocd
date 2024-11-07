@@ -10,8 +10,8 @@ image:
     tag: "latest"  # 기본 태그 설정
 
   mariadb:
-    repository: mariadb:10.6.19-focal
-    tag: "latest"
+    repository: mariadb
+    tag: "10.6.19-focal"
 
   admin:
     repository: nanakia1031/prj-admin
