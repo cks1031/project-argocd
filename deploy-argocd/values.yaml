@@ -7,10 +7,6 @@ replicaCount: 1
 image:
   frontend:
     repository: nanakia1031/prj-frontend
-    tag: "v37"
-    repository: nanakia1031/prj-frontend
-    tag: "v36"
-    repository: nanakia1031/prj-frontend
     tag: "latest"  # 기본 태그 설정
 
   mariadb:
@@ -19,41 +15,21 @@ image:
 
   admin:
     repository: nanakia1031/prj-admin
-    tag: "v37"
-    repository: nanakia1031/prj-admin
-    tag: "v36"
-    repository: nanakia1031/prj-admin
     tag: "latest"
 
   visitor:
-    repository: nanakia1031/prj-visitor
-    tag: "v37"
-    repository: nanakia1031/prj-visitor
-    tag: "v36"
     repository: nanakia1031/prj-visitor
     tag: "latest"
 
 service:
   frontend:
-    repository: nanakia1031/prj-frontend
-    tag: "v37"
-    repository: nanakia1031/prj-frontend
-    tag: "v36"
     port: 3000
 
   mariadb:
     port: 3306
 
   admin:
-    repository: nanakia1031/prj-admin
-    tag: "v37"
-    repository: nanakia1031/prj-admin
-    tag: "v36"
     port: 8000
 
   visitor:
-    repository: nanakia1031/prj-visitor
-    tag: "v37"
-    repository: nanakia1031/prj-visitor
-    tag: "v36"
     port: 8050
