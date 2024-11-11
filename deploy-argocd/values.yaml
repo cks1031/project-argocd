@@ -7,7 +7,7 @@ replicaCount: 1
 image:
   frontend:
     repository: nanakia1031/prj-frontend
-    tag: "v42"  # 기본 태그 설정
+    tag: "v43"  # 기본 태그 설정
 
   mariadb:
     repository: mariadb
@@ -15,11 +15,11 @@ image:
 
   admin:
     repository: nanakia1031/prj-admin
-    tag: "v42"
+    tag: "v43"
 
   visitor:
     repository: nanakia1031/prj-visitor
-    tag: "v42"
+    tag: "v43"
 
 service:
   frontend:
