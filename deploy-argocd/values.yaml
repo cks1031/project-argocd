@@ -7,7 +7,7 @@ replicaCount: 1
 image:
   frontend:
     repository: nanakia1031/prj-frontend
-    tag: "arm-v8"  # 기본 태그 설정
+    tag: "arm-v9"  # 기본 태그 설정
 
   mariadb:
     repository: mariadb
@@ -15,11 +15,11 @@ image:
 
   admin:
     repository: nanakia1031/prj-admin
-    tag: "arm-v8"
+    tag: "arm-v9"
 
   visitor:
     repository: nanakia1031/prj-visitor
-    tag: "arm-v8"
+    tag: "arm-v9"
 
 service:
   frontend:
